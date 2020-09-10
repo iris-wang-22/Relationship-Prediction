@@ -8,12 +8,12 @@ Original file is located at
 
 Project 1 group 8
 
-Read data from file
+# Read data from file
 """
 
 import os
 import codecs
-def readfile(filename,filepath=None):
+def readfile(filename):
 	current_path=os.path.abspath(os.curdir)
 	file_path=os.path.join(current_path,filename)
 	if not os.path.exists(file_path):
@@ -30,9 +30,7 @@ train_data=readfile("train.txt")
 train_data=train_data.splitlines()
 print("length of training data:"+str(len(train_data)))
 
-"""preprocessing data
-
-format: a list of dictionary {Id, Source, Sink}
+"""# **preprocessing data**
 
 - training data
 """
@@ -42,23 +40,44 @@ i=1
 for temp_str in train_data:
   temp=temp_str.split('\t')
   for j in range(1,len(temp)):
-    temp_dict={}
-    temp_dict['Id']=i
-    temp_dict['Source']=temp[0]
-    temp_dict['Sink']=temp[j]
-    train_list.append(temp_dict)
+    # temp_dict={}
+    # temp_dict['Id']=i
+    # temp_dict['Source']=temp[0]
+    # temp_dict['Sink']=temp[j]
+    # train_list.append(temp_dict)
+    temp_list=[]
+    temp_list.append(int(temp[0]))
+    temp_list.append(int(temp[1]))
+    train_list.append(temp_list)
     i=i+1
 print("preprocessed training data length:"+str(len(train_list)))
 
-"""- testing data"""
+"""**check validity**"""
+
+print(train_list[0:20])
+
+"""- testing data
+
+*remove first line (no data)*
+"""
+
+del test_data[0]
 
 test_list=[]
-del test_data[0]
+
 for temp_str in test_data:
   temp=temp_str.split('\t')
-  temp_dict={}
-  temp_dict['Id']=temp[0]
-  temp_dict['Source']=temp[1]
-  temp_dict['Sink']=temp[2]
-  test_list.append(temp_dict)
+  # temp_dict={}
+  # temp_dict['Id']=temp[0]
+  # temp_dict['Source']=temp[1]
+  # temp_dict['Sink']=temp[2]
+  # test_list.append(temp_dict)
+  temp_list=[]
+  temp_list.append(int(temp[1]))
+  temp_list.append(int(temp[2]))
+  test_list.append(temp_list)
 print("preprocessed testing data length:"+str(len(test_list)))
+
+"""**check validity**"""
+
+print(test_list[0:20])
