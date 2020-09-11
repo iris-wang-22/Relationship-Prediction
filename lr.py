@@ -132,30 +132,34 @@ print("preprocessed testing data length:"+str(len(test_list)))
 
 print(test_list[0:20])
 
-"""- Validatation dataset"""
+# """- Validatation dataset"""
+# import random
+# dev_input=[]
+# dev_res=[]
+# for i in range(0,500000):
+#   x=random.randint(0,len(train_list))
+#   dev_input.append(train_list[x])
+#   dev_res.append(1)
+#   # print("generating positive:"+str(i))
+# i=0
+# while i<500000:
+#   x=random.randint(min_num,max_num)
+#   y=random.randint(min_num,max_num)
+#   if x!=y and x not in num_set and y not in num_set:
+#     dev_input.append([x,y])
+#     dev_res.append(0)
+#     # print("generating negative:"+str(i))
+#     i=i+1
+#     num_set.add(y)
+#   else:
+#     continue
+# print(len(dev_input))
+# print(len(dev_res))
 
-import random
-dev_input=[]
-dev_res=[]
-for i in range(0,500000):
-  x=random.randint(0,len(train_list))
-  dev_input.append(train_list[x])
-  dev_res.append(1)
-  # print("generating positive:"+str(i))
-i=0
-while i<500000:
-  x=random.randint(min_num,max_num)
-  y=random.randint(min_num,max_num)
-  if x!=y and x not in num_set and y not in num_set:
-    dev_input.append([x,y])
-    dev_res.append(0)
-    # print("generating negative:"+str(i))
-    i=i+1
-    num_set.add(y)
-  else:
-    continue
-print(len(dev_input))
-print(len(dev_res))
+"""divide dev set"""
+## validation
+from sklearn.model_selection import train_test_split
+data_train, data_dev, label_train, label_dev = train_test_split(train_input,train_res,test_size=0.3)
 
 """# **Build Model, Training and Making Predictions**
 
@@ -190,6 +194,13 @@ print("penalty= ",set_penalty,"C= ",set_C,",score=",round(score,3))
 clf.set_params(penalty=set_penalty,C=set_C,solver='saga')
 
 """- Training"""
+
+## train for dev
+clf.fit(data_train,label_train)
+
+## score
+clf.score(data_dev, label_dev)
+
 
 clf.fit(train_input,train_res)
 
