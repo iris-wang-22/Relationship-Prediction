@@ -77,13 +77,13 @@ print(train_list[0:20])
 import random
 train_input=[]
 train_res=[]
-for i in range(0,5000):
+for i in range(0,500000):
   x=random.randint(0,len(train_list))
   train_input.append(train_list[x])
   train_res.append(1)
   # print("generating positive:"+str(i))
 i=0
-while i<5000:
+while i<500000:
   x=random.randint(min_num,max_num)
   y=random.randint(min_num,max_num)
   if x!=y and x not in num_set and y not in num_set:
@@ -103,8 +103,8 @@ print(train_input[0:20])
 print(train_res[0:20])
 print(min_num)
 print(max_num)
-print(train_input[6000:6020])
-print(train_res[6000:6020])
+print(train_input[500000:500020])
+print(train_res[500000:500020])
 
 """- testing data
 
@@ -132,6 +132,31 @@ print("preprocessed testing data length:"+str(len(test_list)))
 
 print(test_list[0:20])
 
+"""- Validatation dataset"""
+
+import random
+dev_input=[]
+dev_res=[]
+for i in range(0,500000):
+  x=random.randint(0,len(train_list))
+  dev_input.append(train_list[x])
+  dev_res.append(1)
+  # print("generating positive:"+str(i))
+i=0
+while i<500000:
+  x=random.randint(min_num,max_num)
+  y=random.randint(min_num,max_num)
+  if x!=y and x not in num_set and y not in num_set:
+    dev_input.append([x,y])
+    dev_res.append(0)
+    # print("generating negative:"+str(i))
+    i=i+1
+    num_set.add(y)
+  else:
+    continue
+print(len(dev_input))
+print(len(dev_res))
+
 """# **Build Model, Training and Making Predictions**
 
 ## **LR classifier**
@@ -140,7 +165,29 @@ print(test_list[0:20])
 """
 
 from sklearn.linear_model import LogisticRegression
-clf = LogisticRegression(random_state=0)
+clf = LogisticRegression()
+
+"""- hyper-parameter tuning"""
+
+from sklearn.metrics import roc_auc_score
+score=0
+set_penalty=''
+set_C=-1
+for p in ['l1', 'l2']:
+  for c in [0.00001,0.0001,0.001,0.01,0.1,1,10,100,1000,10000]:
+    clf.set_params(penalty=p,C=c,solver='saga')
+    clf.fit(train_input,train_res)
+    predictions=clf.predict(dev_input)
+    this_score=roc_auc_score(dev_res,predictions)
+    if this_score>score:
+      score=this_score
+      set_penalty=p
+      set_C=c
+    print("penalty= ",p,"C= ",c,",score=",round(this_score,3))
+print("--------------------------------")
+print("Best Model:")
+print("penalty= ",set_penalty,"C= ",set_C,",score=",round(score,3))
+clf.set_params(penalty=set_penalty,C=set_C,solver='saga')
 
 """- Training"""
 
