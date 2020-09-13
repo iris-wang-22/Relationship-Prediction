@@ -1,0 +1,88 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in,footskip=0.25in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{biblatex}
+\usepackage{graphicx}
+\usepackage{amssymb} 
+\usepackage{titlesec}
+\usepackage{authblk}
+\usepackage{lipsum}
+\addbibresource{ref.bib}
+\setlength{\footskip}{30pt}
+\linespread{1}
+\usepackage{lettrine}
+\def\bsq#1{%both single quotes
+\lq{#1}\rq}
+
+
+\begin{document}
+
+%\maketitle
+
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\begin{titlepage}
+\linespread{1.2}
+\title{\textbf{Title}}
+
+\author{\textbf{Name}\thanks{Comment}}
+
+
+
+\affil{School of Computing and Information Systems, University of Melbourne}
+
+\affil[]{\textit{\{name\}}@student.unimelb.edu.au}
+
+\affil{name}
+
+	\centering
+	\maketitle
+	\thispagestyle{empty}
+	\vspace{1cm}
+
+% Bottom of the page
+
+
+    
+    \begin{abstract}
+   
+    \end{abstract}
+    
+\end{titlepage}
+
+
+\section{Introduction}
+
+\subsection{Background}
+
+content
+
+\subsection{Motivation}
+
+content
+
+
+\subsection{Related Work}
+
+content
+
+\section{Conclusion and Future Direction}
+
+\subsection{Conclusion}
+
+content
+
+\subsection{Future Direction}
+
+content
+
+
+\nocite{*}
+\printbibliography
+
+\small{*All contributions were made by all teammates equally in a comprehensive manner, and therefore it is hard to distinguish specific responsibilities}
+
+\end{document}
