@@ -6,8 +6,9 @@ This branch is used for building machine learning models for this project. Conte
 
 The models for this project includes:
 
-1.  One-class SVM & LR
-2.  Deep Learning (NN)
-3.  ......
+1.  LR
+2.  KNN
+3.  Decision Tree & Random Forest
+4.  Other ML models
 
 **NO OTHER COMMITS IN THIS BRANCH**
