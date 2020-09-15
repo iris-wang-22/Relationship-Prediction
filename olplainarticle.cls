@@ -49,16 +49,16 @@
 \RequirePackage{fancyhdr}  % custom headers/footers
 \RequirePackage{lastpage}  % Number of pages in the document
 \pagestyle{fancy}          % Enables the custom headers/footers
-% Headers
-\lhead{}%
-\chead{}%
-\rhead{}%
-% Footers
-\lfoot{}%
-\cfoot{}%
-\rfoot{\small\sffamily\bfseries\thepage/\pageref{LastPage}}%
-\renewcommand{\headrulewidth}{0pt}% % No header rule
-\renewcommand{\footrulewidth}{0pt}% % No footer rule
+% % Headers
+% \lhead{}%
+% \chead{}%
+% \rhead{}%
+% % Footers
+% \lfoot{}%
+% \cfoot{}%
+% \rfoot{\small\sffamily\bfseries\thepage/\pageref{LastPage}}%
+% \renewcommand{\headrulewidth}{0pt}% % No header rule
+% \renewcommand{\footrulewidth}{0pt}% % No footer rule
 
 %
 % section/subsection/paragraph set-up
@@ -131,35 +131,35 @@
 %
 % article meta data
 %
-\newcommand{\keywords}[1]{\def\@keywords{#1}}
+% \newcommand{\keywords}[1]{\def\@keywords{#1}}
 
-\def\xabstract{abstract}
-\long\def\abstract#1\end#2{\def\two{#2}\ifx\two\xabstract 
-\long\gdef\theabstract{\ignorespaces#1}
-\def\go{\end{abstract}}\else
-\typeout{^^J^^J PLEASE DO NOT USE ANY \string\begin\space \string\end^^J
-COMMANDS WITHIN ABSTRACT^^J^^J}#1\end{#2}
-\gdef\theabstract{\vskip12pt BADLY FORMED ABSTRACT: PLEASE DO
-NOT USE {\tt\string\begin...\string\end} COMMANDS WITHIN
-THE ABSTRACT\vskip12pt}\let\go\relax\fi
-\go}
+% \def\xabstract{abstract}
+% \long\def\abstract#1\end#2{\def\two{#2}\ifx\two\xabstract 
+% \long\gdef\theabstract{\ignorespaces#1}
+% \def\go{\end{abstract}}\else
+% \typeout{^^J^^J PLEASE DO NOT USE ANY \string\begin\space \string\end^^J
+% COMMANDS WITHIN ABSTRACT^^J^^J}#1\end{#2}
+% \gdef\theabstract{\vskip12pt BADLY FORMED ABSTRACT: PLEASE DO
+% NOT USE {\tt\string\begin...\string\end} COMMANDS WITHIN
+% THE ABSTRACT\vskip12pt}\let\go\relax\fi
+% \go}
 
 %
 % custom title page 
 %
 \renewcommand{\@maketitle}{%
 {%
-\thispagestyle{empty}%
-\vskip-36pt%
+% \thispagestyle{empty}%
+\vskip-0pt%
 {\raggedright\sffamily\bfseries\fontsize{20}{25}\selectfont \@title\par}%
-\vskip10pt
+\vskip0pt
 {\raggedright\sffamily\fontsize{12}{16}\selectfont  \@author\par}
-\vskip18pt%
+\vskip0pt%
 {%
-\noindent
-{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\color{color1}\large\sffamily\textbf{ABSTRACT}}}
-}%
-\vskip10pt\nolinenumbers
+% \noindent
+% {\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\color{color1}\large\sffamily\textbf{ABSTRACT}}}
+}
+\vskip0pt\nolinenumbers
 {%
 \noindent
 \colorbox{color2}{%
@@ -167,14 +167,14 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 \sffamily\small\vskip1ex\if@reqslineno\internallinenumbers\fi\theabstract
 }%
 }%
-\vskip18pt%
+\vskip0pt%
 \noindent
 \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
 \if@reqslineno\internallinenumbers\fi%
 {\color{color1}\keywordname\hspace*{1em}} \@keywords%
 }%
 }%
-\vskip25pt%
+\vskip0pt%
 }%
 }%
 %-----------------------------------------------
@@ -183,7 +183,7 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 
 \definecolor{color1}{RGB}{0,0,0} % Color of section headings
 \definecolor{color2}{RGB}{255,255,255} % Color of the box behind the abstract
-\newcommand{\keywordname}{Keywords:} % Defines the keywords heading name
+% \newcommand{\keywordname}{Keywords:} % Defines the keywords heading name
 
 \renewcommand\Authfont{\fontsize{12}{14}\usefont{OT1}{phv}{b}{n}}
 \renewcommand\Affilfont{\fontsize{10}{12}\usefont{OT1}{phv}{b}{n}}
