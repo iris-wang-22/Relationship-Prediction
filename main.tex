@@ -5,12 +5,12 @@
 
 
 \author{Author A\thanks{111}}
-\author{Author B\thanks{222}}
-\author{Author C\thanks{333}}
+\author{Xinnan SHEN\thanks{1051380}}
+\author{Ziyue WANG\thanks{1014037}}
 
 \affil{School of Computing and Information Systems, University of Melbourne}
 
-\affil[]{\textit{\{aaa,bbb,ccc\}}@student.unimelb.edu.au}
+\affil[]{\textit{\{aaa,xinnan.shen, ziyue2\}}@student.unimelb.edu.au}
 
 
 % \keywords{Keyword1, Keyword2, Keyword3}
@@ -26,44 +26,49 @@
 \pagestyle{empty}
 
 
-\section*{1 Introduction}
+\section{Introduction}\label{intro}
 
-\subsection*{1.1 Background}
+\subsection{Background}\label{bgd}
+\paragraph*{}
+Pairwise Relationship is a very common relationship in our daily life. We can use pairwise relationships to store many forms of data, including the relationship between friends, the connections between devices in a network. In reality, when we build the pairwise relationships, it is inevitable that some edges between nodes are absent in the graph, which might mislead others a lot. Therefore, finding a way to predict the edges between nodes is an important step, as it makes the graph much closer to the reality. However, it is not an easy task to find all missing edges in a graph, as we don't know the real relationships between nodes. 
+\paragraph*{}
+In this project, we have implemented a system to predict the pairwise relationships between nodes by using machine learning tools. Given the nodes and some edges in the graph, the system can predict whether there is an relationship between them. The results have shown that the machine learning model works well in predicting the edges between nodes. Although there are some errors, the model still performs quite well.
+
+\subsection{Related Works}\label{relaw}
+\paragraph{}
+Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started. test \cite{liben2007link} test \cite{lu2011link} test
+\paragraph*{}
+In this paper, the system implementation details will be deeply discussed. In section \ref{datafeature}, we will discuss the method of extract training data from given dataset and the process of feature engineering. In section \ref{appres}, the approaches we have used to design the system and their corresponding results will be mentioned. In addition, section \ref{analysis} will analyse the possible error in this system and the causes of these errors. Finally, section \ref{conclu} will make a conclusion and state the possible improvements of this system.
+
+
+
+\section{Data Sampling and Feature Engineering}\label{datafeature}
+
+\subsection{Data Sampling}\label{data}
 Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
 
-\subsection*{1.2 Related Work}
+\subsection{Feature Engineering}\label{feature}
 Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
 
-\subsection*{1.3 Report Structure}
+\section{Approaches and Results}\label{appres}
+
+\subsection{Logistic Regression}\label{lr}
 Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
 
-\section*{2 Data Sampling and Feature Engineering}
-
-\subsection*{2.1 Data Sampling}
+\subsection{Random Forest}\label{random}
 Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
 
-\subsection*{2.2 Feature Engineering}
+\subsection{Deep Learning}\label{dnn}
 Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
 
-\section*{3. Approaches and Results}
-
-\subsection*{3.1 Model 1}
+\section{Critical Analysis}\label{analysis}
 Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
 
-\subsection*{3.2 Model 2}
-Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
-
-\subsection*{3.3 Model 3}
-Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
-
-\section*{4. Critical Analysis}
-Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
-
-\section*{5. Conclusion and Future Directions}
+\section{Conclusion and Future Directions}\label{conclu}
 Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
 
 
-\bibliography{ref}
+\bibliography{sample}
 % \printbibliograpy
 \small{*All contributions were made by all teammates equally in a comprehensive manner, and therefore it is hard to distinguish specific responsibilities}
 \end{document}
