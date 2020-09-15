@@ -71,9 +71,10 @@ model = md.Sequential()
 model.add(lr.Dense(128,activation="relu"))
 model.add(lr.Dense(4,activation="relu"))
 model.add(lr.Dense(32,activation="relu"))
+model.add(lr.Dropout(0.2))
 model.add(lr.Dense(1,activation="sigmoid"))
 model.compile(optimizer="adam",loss="binary_crossentropy",metrics=["accuracy"])#compile the model
-model.fit(X_train, Y_train, epochs=4, batch_size=16)#fit the model
+model.fit(X_train, Y_train, epochs=16, batch_size=32)#fit the model
 
 loss, acc = model.evaluate(X_dev, Y_dev)
 print(loss,acc)
