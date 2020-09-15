@@ -55,7 +55,10 @@ print(data_test[0:100])
 from sklearn.model_selection import train_test_split
 X_train, X_dev, Y_train, Y_dev = train_test_split(data_train, label_train, test_size=0.3, random_state=0)
 
-"""- Fully Connected NN"""
+"""- Fully Connected NN
+
+**3 Layers**
+"""
 
 # def AUC(yTrue, yPred):
 #     import tensorflow as tf
@@ -66,24 +69,40 @@ from tensorboard.plugins.hparams import api
 from keras import models as md
 from keras import layers as lr
 import numpy as np
+best_model=""
+best_acc=0.0
+best_hp={}
+
 # units1=api.HParam("num_units_layer_1",api.Discrete([4,8,16,32,64,128]))#dense layer
 # units2=api.HParam("num_units_layer_2",api.Discrete([4,8,16,32,64,128]))#dense layer
 # units3=api.HParam("num_units_layer_2",api.Discrete([4,8,16,32,64,128]))#dense layer
 # optimizerfunc=api.HParam("optimizer",api.Discrete(["adam","sgd"]))#optimizer
 # X_train=np.array(data_train)
 # Y_train=np.array(label_train)
-model = md.Sequential()
-model.add(lr.Dense(3,activation="tanh"))
-model.add(lr.Dense(16,activation="tanh"))
-model.add(lr.Dense(16,activation="tanh"))
-model.add(lr.Dense(1,activation="sigmoid"))
-model.compile(optimizer="adam",loss="binary_crossentropy",metrics=["accuracy"])#compile the model
-model.fit(X_train, Y_train, epochs=3, batch_size=3)#fit the model
+for u1 in [4,8,16,32,64,128]:
+  for u2 in [4,8,16,32,64,128]:
+    for u3 in [4,8,16,32,64,128]:
+      for opt in ["adam","sgd"]:
 
-loss, acc = model.evaluate(X_dev, Y_dev)
-print(loss,acc)
+        model = md.Sequential()
+        model.add(lr.Dense(u1,activation="relu"))
+        model.add(lr.Dense(u2,activation="relu"))
+        model.add(lr.Dense(u3,activation="relu"))
+        model.add(lr.Dropout(0.2))
+        model.add(lr.Dense(1,activation="sigmoid"))
+        model.compile(optimizer=opt,loss="binary_crossentropy",metrics=["accuracy"])#compile the model
+        model.fit(X_train, Y_train, epochs=32, batch_size=16)#fit the model
+        loss, acc = model.evaluate(X_dev, Y_dev)
+        hp={"num_units_layer_1":u1,"num_units_layer_2":u2,"num_units_layer_3":u3,"optimizer":opt}
+        print("current model:"+str(hp))
+        print("loss:"+str(loss)+",accuracy:"+str(acc))
+        if acc>best_acc:
+          best_acc=acc
+          best_hp=hp
+          best_model=model
+print("Best Model:"+str(best_hp)+",accuracy"+str(best_acc))
 
-Y_test=model.predict(data_test).tolist()
+Y_test=best_model.predict(data_test).tolist()
 print(len(Y_test))
 
 current_path=os.path.abspath(os.curdir)
