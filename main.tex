@@ -4,13 +4,13 @@
 \title{Pairwise Relationships Prediction System}
 
 
-\author{Author A\thanks{111}}
+\author{Hanzhong Wang\thanks{1029740}}
 \author{Xinnan SHEN\thanks{1051380}}
 \author{Ziyue WANG\thanks{1014037}}
 
 \affil{School of Computing and Information Systems, University of Melbourne}
 
-\affil[]{\textit{\{aaa,xinnan.shen, ziyue2\}}@student.unimelb.edu.au}
+\affil[]{\textit{\{hanzhongw,xinnan.shen, ziyue2\}}@student.unimelb.edu.au}
 
 
 % \keywords{Keyword1, Keyword2, Keyword3}
@@ -51,12 +51,46 @@ Thanks for using Overleaf to write your article. Your introduction goes here! So
 Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
 
 \section{Approaches and Results}\label{appres}
+\paragraph*{}
+After we sampled data from the entire dataset and conducted feature engineering, we tried to use different kinds of machine learning tools to generate the results, including logistic regression, random forest and deep learning.
 
 \subsection{Logistic Regression}\label{lr}
-Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
+\paragraph*{}
+Logistic Regression is suitable for binary classification problem, which we have treated as a baseline for this system \citep{menard_lr}. We have divided the processed data into training set and validation test \citep{scikit-learn}. To prevent the model from overfitting, we have used validation set not only to tune hyperparameters, but also to see the performance of the model in a very different dataset. Based on the performance of the model in the validation set, we have chosen the hyperparameters with the greatest accuracy to train the data and make predictions. The performance of Logistic Regression model can be seen as follows:
 
-\subsection{Random Forest}\label{random}
-Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
+% table
+\begin{table}[!htbp]
+\centering
+\caption{Logistic Regression Result}\label{tab:lr}
+\begin{tabular}{ccc}
+\toprule
+Accuracy& Precision& Recall\\
+\midrule
+0.2& 0.3& 0.4\\%data not right, modify it later
+\bottomrule
+\end{tabular}
+\end{table}
+\paragraph*{}
+From table \ref{tab:lr}, we can see that the logistic regression does not perform very well, but it is suitable to act as a baseline for this system.
+
+\subsection{K-Nearest Neighbour}\label{knn}
+\paragraph*{}
+We have also used KNN classified to try to improve the performance of the model. Similar to what we have done in Logistic Regression, we have also divided the data into training set and validation set. By using scikit-learn tools \citep{scikit-learn}, we can train the model and predict the results more easily. Table \ref{tab:knn} has shown the results of K-Nearest Neighbour model. It is evident that KNN performs much better than Logistic Regression, which is a big improvement of our system.
+
+% table
+\begin{table}[!htbp]
+\centering
+\caption{KNN Result}\label{tab:knn}
+\begin{tabular}{ccc}
+\toprule
+Accuracy& Precision& Recall\\
+\midrule
+0.2& 0.3& 0.4\\%data not right, modify it later
+\bottomrule
+\end{tabular}
+\end{table}
+
+
 
 \subsection{Deep Learning}\label{dnn}
 Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
