@@ -41,6 +41,8 @@ We have built some machine learning models in this project, including neural net
 -   `nn_3.py`: This file is used for building a model based on Deep Neural Networks (3 hidden layers)
 -   `nn_4.py`: This file is used for building a model based on Deep Neural Networks (4 hidden layers)
 
+In particular, we have used DNN with 2 hidden layers as our final approach.
+
 ## Copyright
 
 Copyright © 2020, [Xinnan SHEN](https://github.com/sxn2012), [Ziyue Wang](https://github.com/iris-wang-22), [Hanzhong Wang](https://github.com/HzJayden), released under the [GPL-3.0 License](https://github.com/sxn2012/SMLProject/blob/master/LICENSE).
