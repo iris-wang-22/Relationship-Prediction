@@ -1,6 +1,8 @@
 \documentclass[fleqn,11pt]{olplainarticle}
 % Use option lineno for line numbers 
-
+\usepackage{graphicx} 
+\usepackage{float} 
+\usepackage{subfigure} 
 \title{Pairwise Relationships Prediction System}
 
 
@@ -22,8 +24,8 @@
 \begin{document}
 \maketitle
 \flushbottom
-\thispagestyle{empty}
-\pagestyle{empty}
+\thispagestyle{plain}
+\pagestyle{plain}
 
 
 \section{Introduction}\label{intro}
@@ -36,6 +38,7 @@ In this project, we have implemented a system to predict the pairwise relationsh
 
 \subsection{Related Works}\label{relaw}
 \paragraph{}
+%TODO
 Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started. test \cite{liben2007link} test \cite{lu2011link} test
 \paragraph*{}
 In this paper, the system implementation details will be deeply discussed. In section \ref{datafeature}, we will discuss the method of extract training data from given dataset and the process of feature engineering. In section \ref{appres}, the approaches we have used to design the system and their corresponding results will be mentioned. In addition, section \ref{analysis} will analyse the possible error in this system and the causes of these errors. Finally, section \ref{conclu} will make a conclusion and state the possible improvements of this system.
@@ -45,7 +48,8 @@ In this paper, the system implementation details will be deeply discussed. In se
 \section{Data Sampling and Feature Engineering}\label{datafeature}
 
 \subsection{Data Sampling}\label{data}
-Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
+\paragraph*{}
+The original training data “train.txt” contains 20,000 records of user-follow from Twitter, with a total of 4,867,136 nodes(users). Due to oversized experimental data, in this experiment, we only randomly selected 50,000 edges (source node, target node) from the original data as the true edges (positive sample) of the experimental training data, and randomly selected 50,000 edges (source node, target node)  that do not exist in the original training data as the false edges (negative sample) of the experimental training data. 
 
 \subsection{Feature Engineering}\label{feature}
 Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
@@ -64,18 +68,18 @@ Logistic Regression is suitable for binary classification problem, which we have
 \caption{Logistic Regression Result}\label{tab:lr}
 \begin{tabular}{ccc}
 \toprule
-Accuracy& Precision& Recall\\
+Precision& Recall& F-1 Score\\
 \midrule
-0.2& 0.3& 0.4\\%data not right, modify it later
+0.99& 0.26& 0.41\\
 \bottomrule
 \end{tabular}
 \end{table}
 \paragraph*{}
-From table \ref{tab:lr}, we can see that the logistic regression does not perform very well, but it is suitable to act as a baseline for this system.
+From table \ref{tab:lr}, we can see that the logistic regression does not have a very good performance, but it is suitable to act as a baseline for this system.
 
 \subsection{K-Nearest Neighbour}\label{knn}
 \paragraph*{}
-We have also used KNN classified to try to improve the performance of the model. Similar to what we have done in Logistic Regression, we have also divided the data into training set and validation set. By using scikit-learn tools \citep{scikit-learn}, we can train the model and predict the results more easily. Table \ref{tab:knn} has shown the results of K-Nearest Neighbour model. It is evident that KNN performs much better than Logistic Regression, which is a big improvement of our system.
+We have also used KNN classifier to try to improve the performance of the model \citep{Rebala2019}. Similar to what we have done in Logistic Regression, we have also divided the data into training set and validation set. By using scikit-learn tools \citep{scikit-learn}, we can train the model and predict the results more easily. Table \ref{tab:knn} has shown the results of K-Nearest Neighbour model. It is evident that KNN performs a little bit better than Logistic Regression, as the F-1 score is much higher. However, we still need to use some more powerful models to enhance the performance even further.
 
 % table
 \begin{table}[!htbp]
@@ -83,9 +87,9 @@ We have also used KNN classified to try to improve the performance of the model.
 \caption{KNN Result}\label{tab:knn}
 \begin{tabular}{ccc}
 \toprule
-Accuracy& Precision& Recall\\
+Precision& Recall& F-1 Score\\
 \midrule
-0.2& 0.3& 0.4\\%data not right, modify it later
+0.62& 0.64& 0.63\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -93,7 +97,15 @@ Accuracy& Precision& Recall\\
 
 
 \subsection{Deep Learning}\label{dnn}
+% TODO
 Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{result.png}
+	\caption{Deep Neural Networks Result}
+	\label{fig:res}
+\end{figure}
+
 
 \section{Critical Analysis}\label{analysis}
 Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
