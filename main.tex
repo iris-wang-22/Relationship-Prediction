@@ -38,8 +38,7 @@ In this project, we have implemented a system to predict the pairwise relationsh
 
 \subsection{Related Works}\label{relaw}
 \paragraph{}
-%TODO
-Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started. test \cite{liben2007link} test \cite{lu2011link} test
+Many researches related to pairwise link prediction have been conducted. For example, Liben-Nowell has created a relationship prediction model that can be used in social networks \citep{liben2007link}. Also, Zhou et al. have mentioned that they have adopted machine learning tools to predict the relationships between people \citep{lu2011link}. In our project, we will also use machine learning methods to make predictions. Meanwhile, some researchers believe that deep learning is a strong tool that can be used to predict relationships \citep{wang2019}, which has also been adopted in our model.
 \paragraph*{}
 In this paper, the system implementation details will be deeply discussed. In section \ref{datafeature}, we will discuss the method of extract training data from given dataset and the process of feature engineering. In section \ref{appres}, the approaches we have used to design the system and their corresponding results will be mentioned. In addition, section \ref{analysis} will analyse the possible error in this system and the causes of these errors. Finally, section \ref{conclu} will make a conclusion and state the possible improvements of this system.
 
@@ -52,7 +51,9 @@ In this paper, the system implementation details will be deeply discussed. In se
 The original training data “train.txt” contains 20,000 records of user-follow from Twitter, with a total of 4,867,136 nodes(users). Due to oversized experimental data, in this experiment, we only randomly selected 50,000 edges (source node, target node) from the original data as the true edges (positive sample) of the experimental training data, and randomly selected 50,000 edges (source node, target node)  that do not exist in the original training data as the false edges (negative sample) of the experimental training data. 
 
 \subsection{Feature Engineering}\label{feature}
-Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
+\paragraph*{}
+In this project, the characteristics from the given training data can easily make us associate it with the graph, because the key of this task is belongs to the problem of link prediction. First, we preprocessed the data set because there are many irregular symbols or spaces. The preprocessing of the data ensures that the data is clean before tokenization. Second, we generate an undirected graph and directed graph based on the given training data. In this project, we created a new heuristic method to extract a feature. For example, if user M follows A, B, and C, and N is very similar to A, B, and C, we think M may follow N. In the project, we created M and N set that contains the item of A,B,C respectively, and then calculated the Jaccard similarity to measure the similarity between M and N.
+
 
 \section{Approaches and Results}\label{appres}
 \paragraph*{}
@@ -98,7 +99,10 @@ Precision& Recall& F-1 Score\\
 
 \subsection{Deep Learning}\label{dnn}
 % TODO
-Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
+\paragraph*{}
+In this project, we have also used deep learning as a model to generate predictions. We have tried to use fully connected neural networks, and the activation function of output layer is sigmoid. The loss function is binary cross-entropy, which is suitable for binary classification problem \citep{tensorflow2015-whitepaper}. In particular, we have used the validation dataset to tune hyper-parameters so that we can select the model with the best performance to predict the final results.
+\paragraph*{}
+For DNN, we have tried models with 2, 3 and 4 hidden layers. The results is shown in figure \ref{fig:res}. From the graph, we can see that the performance of DNN has improved a lot, much better than Logistic Regression and KNN. In addition, the model with 2 hidden layers has the greatest F1-score in the validation set (82\%). Therefore, it performs best among all the models, and we have chosen this model to produce the final predictions.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{result.png}
@@ -111,10 +115,21 @@ Thanks for using Overleaf to write your article. Your introduction goes here! So
 Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
 
 \section{Conclusion and Future Directions}\label{conclu}
-Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
+\subsection{Conclusion}\label{con}
+\paragraph*{}
+Pairwise relationship is a useful relationship to store a number of data in real life. We have implemented a system to predict pairwise relationships, and the system can predict satisfactory results.
+\subsection{Future Directions}\label{future}
+\paragraph*{}
+Although the system can generate satisfactory results, with high F1 score, its performance can be further improved.
+\begin{itemize}
+\item feature engineering: It is worth trying to generate more complex features from the training data to feed to the original model.
+\item CNN: It is a good direction to consider Convolutional Neural Networks, as it might perform better than fully-connected neural networks.
+\item Other ML tools: We could also try some other machine learning methods which we hadn't try in this project, like SVM.
+\end{itemize}
+
 
 
 \bibliography{sample}
 % \printbibliograpy
-\small{*All contributions were made by all teammates equally in a comprehensive manner, and therefore it is hard to distinguish specific responsibilities}
+% \small{*All contributions were made by all teammates equally in a comprehensive manner, and therefore it is hard to distinguish specific responsibilities}
 \end{document}
