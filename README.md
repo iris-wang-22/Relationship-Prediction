@@ -1,4 +1,4 @@
-# SMLProject
+# Pairwise Relationships Prediction System
 
 ## Introduction
 
@@ -27,15 +27,20 @@ The dataset used in this system are from 20,000 records of user-follow from Twit
 We have built some machine learning models in this project, including neural networks. The `*.py` files are used for handling data, building the models and training data to generate predictions. The detailed description of files are follows:
 
 -   `generate_data.py`: This file is used for generating random negative data and create features that are necessary for the models.
--   `preprocess.py`: This file is used for preprocessing the generated data so that data be fed to the models.
+-   `preprocess.py` and `process_data.py`: These two files are used for preprocessing the generated data so that data can be fed into the models.
 -   `graph.py`: This file is used for generating a graph, containing all the nodes and edges in the training data.
--   `similarity.py`: This file is used for calculating similarities between data, which will give us an overview of what the data looks like.
+-   `similarity.py`: This file is used for calculating similarities between data.
 -   `Jaccard.py`: This file is used for calculating Jaccard similarity, which is important for feature engineering.
--   
+-   `getfeatures_undirectedgraph_ipynb.py`: This file is used for generating features of undirected graph.
+-   `getfeatures_directedgraph .py`: This file is used for generating features of directed graph.
 -   `knn.py`: This file is used for building a model based on K-Nearest Neighbour.
 -   `lr.py`: This file is used for building a model based on Logistic Regression.
 -   `nb.py`: This file is used for building a model based on Naive Bayes.
+-   `Decision Tree_Random Forest.py`: This file is used for building a model based on Decision Tree and Random Forest.
 -   `nn_2.py`: This file is used for building a model based on Deep Neural Networks (2 hidden layers)
 -   `nn_3.py`: This file is used for building a model based on Deep Neural Networks (3 hidden layers)
 -   `nn_4.py`: This file is used for building a model based on Deep Neural Networks (4 hidden layers)
 
+## Copyright
+
+Copyright © 2020, [Xinnan SHEN](https://github.com/sxn2012), [Ziyue Wang](https://github.com/iris-wang-22), [Hanzhong Wang](https://github.com/HzJayden), released under the [GPL-3.0 License](https://github.com/sxn2012/SMLProject/blob/master/LICENSE).
