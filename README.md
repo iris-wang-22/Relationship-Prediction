@@ -1,5 +1,7 @@
 # Pairwise Relationships Prediction System
 
+>   This is our group's SML Project 1 in 2020S2. 
+
 ## Introduction
 
 Pairwise Relationship is a very common relationship in our daily life. We can use pairwise relationships to store many forms of data, including the relationship between friends, the connections between devices in a network. Finding a way to predict the edges between nodes is an important step, but it is not an easy task to find all missing edges in a graph. In this project, we have implemented a system to predict the pairwise relationships between nodes by using machine learning tools. 
