@@ -85,21 +85,6 @@ print('number of edges',G.number_of_edges())
 import matplotlib.pyplot as plt
 nx.draw(SG)
 
-print("Generating community......")
-from networkx.algorithms import community
-
-comms = list(community.asyn_fluidc(G,100))
-print("Size of communities:"+str(len(comms)))
-
-print("Adding community attribute......")
-count=0
-for node in G.nodes():
-    if(count%100==0):
-        print(count)
-    count+=1
-    for i in range(len(comms)):
-        if node in comms[i]:
-            G.nodes[node]['community'] = i
 
 """## features"""
 
