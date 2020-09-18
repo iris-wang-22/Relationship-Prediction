@@ -114,6 +114,8 @@ INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/subfigure/subfigure.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/subfigure/subfigure.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/subfigure/subfigure.cfg
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/subfigure/subfigure.cfg
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/floatrow/floatrow.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/floatrow/floatrow.sty
 INPUT main.aux
 INPUT main.aux
 OUTPUT main.aux
@@ -238,10 +240,8 @@ INPUT /usr/local/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
 INPUT result.png
 INPUT ./result.png
 INPUT ./result.png
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmr8c.tfm
 INPUT main.bbl
 INPUT main.bbl
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmr8c.vf
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT main.aux
