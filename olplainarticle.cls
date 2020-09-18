@@ -29,11 +29,11 @@
 \RequirePackage{booktabs}
 \RequirePackage{authblk}
 
-\RequirePackage[left=5cm,%
-                right=2cm,%
-                top=2.25cm,%
-                bottom=2.25cm,%
-                headheight=12pt,%
+\RequirePackage[left=1.75cm,%
+                right=1.75cm,%
+                top=1.75cm,%
+                bottom=1.75cm,%
+                headheight=0pt,%
                 letterpaper]{geometry}%
                 
 \RequirePackage[labelfont={bf,sf},%
@@ -178,8 +178,8 @@
 }%
 }%
 %-----------------------------------------------
-\setlength{\columnsep}{0.55cm} % Distance between the two columns of text
-\setlength{\fboxrule}{0.75pt} % Width of the border around the abstract
+\setlength{\columnsep}{0.5cm} % Distance between the two columns of text
+\setlength{\fboxrule}{0pt} % Width of the border around the abstract
 
 \definecolor{color1}{RGB}{0,0,0} % Color of section headings
 \definecolor{color2}{RGB}{255,255,255} % Color of the box behind the abstract

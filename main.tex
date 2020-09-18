@@ -9,7 +9,7 @@
 \author{Hanzhong Wang\thanks{1029740}}
 \author{Xinnan SHEN\thanks{1051380}}
 \author{Ziyue WANG\thanks{1014037}}
-
+\affil{Team Name: group8}
 \affil{School of Computing and Information Systems, University of Melbourne}
 
 \affil[]{\textit{\{hanzhongw,xinnan.shen, ziyue2\}}@student.unimelb.edu.au}
@@ -32,15 +32,13 @@
 
 \subsection{Background}\label{bgd}
 \paragraph*{}
-Pairwise Relationship is a very common relationship in our daily life. We can use pairwise relationships to store many forms of data, including the relationship between friends, the connections between devices in a network. In reality, when we build the pairwise relationships, it is inevitable that some edges between nodes are absent in the graph, which might mislead others a lot. Therefore, finding a way to predict the edges between nodes is an important step, as it makes the graph much closer to the reality. However, it is not an easy task to find all missing edges in a graph, as we don't know the real relationships between nodes. 
-\paragraph*{}
-In this project, we have implemented a system to predict the pairwise relationships between nodes by using machine learning tools. Given the nodes and some edges in the graph, the system can predict whether there is an relationship between them. The results have shown that the machine learning model works well in predicting the edges between nodes. Although there are some errors, the model still performs quite well.
+Nowadays, pairwise relationships are used to store many forms of data. However, when we build the pairwise relationships, it is inevitable that some edges between nodes are absent in the graph, which might mislead others a lot. Therefore, finding a way to predict the edges between nodes is an important step. In this project, we have implemented a system to predict the pairwise relationships between nodes by using machine learning tools. Given the nodes and some edges in the graph, the system can predict whether there is a relationship between them.  The results have shown that the machine learning model works well in predicting the edges between nodes. Although there are some errors, the model still have great performance.
 
 \subsection{Related Works}\label{relaw}
-\paragraph{}
-Many researches related to pairwise link prediction have been conducted. For example, Liben-Nowell has created a relationship prediction model that can be used in social networks \citep{liben2007link}. Also, Zhou et al. have mentioned that they have adopted machine learning tools to predict the relationships between people \citep{lu2011link}. In our project, we will also use machine learning methods to make predictions. Meanwhile, some researchers believe that deep learning is a strong tool that can be used to predict relationships \citep{wang2019}, which has also been adopted in our model.
 \paragraph*{}
-In this paper, the system implementation details will be deeply discussed. In section \ref{datafeature}, we will discuss the method of extract training data from given dataset and the process of feature engineering. In section \ref{appres}, the approaches we have used to design the system and their corresponding results will be mentioned. In addition, section \ref{analysis} will analyse the possible error in this system and the causes of these errors. Finally, section \ref{conclu} will make a conclusion and state the possible improvements of this system.
+Many researches related to pairwise link prediction have been conducted. For example, Liben-Nowell has created a relationship prediction model that can be used in social networks \citep{liben2007link}. Also, Zhou et al. have mentioned that they have adopted machine learning tools to predict the relationships between people \citep{lu2011link}. In our project, we will also use machine learning methods to make predictions. Meanwhile, some researchers believe that deep learning is a strong tool that can be used to predict relationships \citep{wang2019}, which has also been adopted in our model.
+% \paragraph*{}
+% In this paper, the system implementation details will be deeply discussed. In section \ref{datafeature}, we will discuss the method of extract training data from given dataset and the process of feature engineering. In section \ref{appres}, the approaches we have used to design the system and their corresponding results will be mentioned. In addition, section \ref{analysis} will analyse the possible error in this system and the causes of these errors. Finally, section \ref{conclu} will make a conclusion and state the possible improvements of this system.
 
 
 
@@ -52,12 +50,12 @@ The original training data “train.txt” contains 20,000 records of user-follo
 
 \subsection{Feature Engineering}\label{feature}
 \paragraph*{}
-In this project, the characteristics from the given training data can easily make us associate it with the graph, because the key of this task is belongs to the problem of link prediction. First, we preprocessed the data set because there are many irregular symbols or spaces. The preprocessing of the data ensures that the data is clean before tokenization. Second, we generate an undirected graph and directed graph based on the given training data. In this project, we created a new heuristic method to extract a feature. For example, if user M follows A, B, and C, and N is very similar to A, B, and C, we think M may follow N. In the project, we created M and N set that contains the item of A,B,C respectively, and then calculated the Jaccard similarity to measure the similarity between M and N.
+We first created an undirected graph using all of the given data and then generated multiple features of train data and test data based on the graph: resource allocation Index, Jaccard coefficient, and Adamic-Adar index, and preferential attachment score. In addition, according to the follower-followee relationship of the data nodes, we built a directed graph in which the source node points to the sink node. We predicted that if user M follows A, B, and C, and N is very similar to A, B, and C, we assume M may follow N. Thus, we generate two features based on the directed graph: cosine similarity and Jaccard similarity coefficient of the sink node and sinks list of the source node, which will help increase the accuracy of prediction.
 
 
 \section{Approaches and Results}\label{appres}
-\paragraph*{}
-After we sampled data from the entire dataset and conducted feature engineering, we tried to use different kinds of machine learning tools to generate the results, including logistic regression, random forest and deep learning.
+% \paragraph*{}
+% After we sampled data from the entire dataset and conducted feature engineering, we tried to use different kinds of machine learning tools to generate the results, including logistic regression, K-Nearest Neighbour and deep learning.
 
 \subsection{Logistic Regression}\label{lr}
 \paragraph*{}
@@ -98,33 +96,38 @@ Precision& Recall& F-1 Score\\
 
 
 \subsection{Deep Learning}\label{dnn}
-% TODO
 \paragraph*{}
-In this project, we have also used deep learning as a model to generate predictions. We have tried to use fully connected neural networks, and the activation function of output layer is sigmoid. The loss function is binary cross-entropy, which is suitable for binary classification problem \citep{tensorflow2015-whitepaper}. In particular, we have used the validation dataset to tune hyper-parameters so that we can select the model with the best performance to predict the final results.
+In this project, we have also used deep learning to generate predictions. We have tried to use fully connected neural networks, and the activation function of output layer is sigmoid. The loss function is binary cross-entropy, which is suitable for binary classification problem \citep{tensorflow2015-whitepaper}. In particular, we have used the validation dataset to tune hyper-parameters so that we can select the model with the best performance to predict the final results.
 \paragraph*{}
 For DNN, we have tried models with 2, 3 and 4 hidden layers. The results is shown in figure \ref{fig:res}. From the graph, we can see that the performance of DNN has improved a lot, much better than Logistic Regression and KNN. In addition, the model with 2 hidden layers has the greatest F1-score in the validation set (82\%). Therefore, it performs best among all the models, and we have chosen this model to produce the final predictions.
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{result.png}
+	\includegraphics[scale=0.3]{result.png}
 	\caption{Deep Neural Networks Result}
 	\label{fig:res}
 \end{figure}
 
 
 \section{Critical Analysis}\label{analysis}
-Thanks for using Overleaf to write your article. Your introduction goes here! Some examples of commonly used commands and features are listed below, to help you get started.
+\paragraph*{}
+The factors resulting in incorrect predictions include the problems within dataset and improper feature input. The problems within dataset are mainly due to the fact that the dataset is too large and the sink list of each source from the training set is not balanced. In order to solve this issue, we have sampled and analyzed the data from training set, and processed the training set into positive data and negative data. However, there are still some limitations. First of all, the accuracy of the positive data prediction greatly depends on the sampling data, which loses the information of the remaining data. Secondly, the method of generating negative data is to randomly choose the source node in the training set and the node in the sink list that does not exist in this source node as the new sink, which might lead to improper data selection. Finally, due to improper data selection, our model may have overfitting problems, which will affect the accuracy of prediction results.
+\paragraph*{}
+Logistic regression is a binary classification method. Compared with the naive Bayes method, logistic regression does not need to consider whether the features are related. Compared with decision tree and SVM, we can easily use the generated data to update the model by using online gradient descent. However, the dataset is too large and the generated feature space is very large in this project, which results in poor performance of logistic regression. The model is likely to suffer from underfitting problem and cannot handle a large number of multi-type features or variables well.
+\paragraph*{}
+In this project,  the performance of the KNN model is not very good, as this training set is large and each samples are not balanced. For example, some source nodes have very few nodes in the sink list, while others have quite many nodes in sink list, which results in imbalance distribution of data samples and a relatively large deviation. We have achieved better accuracy by using deep neural network compared with the above two methods. Because this method performs better than LR and KNN in feature space. By using deep neural network, we try to reduce the complexity of the neural network and focus on training the model with positive and negative characteristics generated by data sampling. Parameters such as the number of hidden layers can be adjusted to better capture the nature of input features and avoid overfitting. 
+
 
 \section{Conclusion and Future Directions}\label{conclu}
 \subsection{Conclusion}\label{con}
 \paragraph*{}
-Pairwise relationship is a useful relationship to store a number of data in real life. We have implemented a system to predict pairwise relationships, and the system can predict satisfactory results.
+Pairwise relationship is a useful relationship to store a number of data in real life. In this project, we have implemented a system to predict pairwise relationships, and the system can predict satisfactory results.
 \subsection{Future Directions}\label{future}
 \paragraph*{}
-Although the system can generate satisfactory results, with high F1 score, its performance can be further improved.
+Although the system can generate satisfactory results, with high F1 score, its performance can be further improved by considering some other aspects:
 \begin{itemize}
-\item feature engineering: It is worth trying to generate more complex features from the training data to feed to the original model.
-\item CNN: It is a good direction to consider Convolutional Neural Networks, as it might perform better than fully-connected neural networks.
-\item Other ML tools: We could also try some other machine learning methods which we hadn't try in this project, like SVM.
+\item feature engineering: It is worth trying to generate more complex features from the training data.
+\item CNN: It is a good idea to consider Convolutional Neural Networks, as it might have better performance
+\item Other ML tools: We could also try some other machine learning methods, like SVM.
 \end{itemize}
 
 
