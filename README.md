@@ -45,6 +45,10 @@ We have built some machine learning models in this project, including neural net
 
 In particular, we have used DNN with 2 hidden layers as our final approach.
 
+## Result
+
+[Kaggle Competition](https://www.kaggle.com/c/comp90051-2020-sem2-proj1/leaderboard) AUC score **0.83799**
+
 ## Copyright
 
 Copyright © 2020, [Xinnan SHEN](https://github.com/sxn2012), [Ziyue Wang](https://github.com/iris-wang-22), [Hanzhong Wang](https://github.com/HzJayden), released under the [GPL-3.0 License](https://github.com/sxn2012/SMLProject/blob/master/LICENSE).
